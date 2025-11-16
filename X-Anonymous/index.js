@@ -50,12 +50,25 @@ app.get("/:id", (req, res) => {
     content += fs.readFileSync("../Problem_3/src/App.module.css", "utf8");
     res.send(content);
     return;
+  } else if (id == 19) {
+    content += "\n\n=== arithmeticModule.js ===\n";
+    content += fs.readFileSync(`../Problem_19/arithmeticModule.js`, "utf8");
+    content += "\n\n=== useModule.js ===\n";
+    content += fs.readFileSync(`../Problem_19/useModule.js`, "utf8");
+    res.send(content);
+    return;
   } else if (id == 20 || id == 21 || id == 26) {
     content = fs.readFileSync(`../Problem_20_to_26/Problem_${id}.js`, "utf8");
     res.send(content);
     return;
   } else if (id >= 22 && id <= 24) {
     content = fs.readFileSync(`../Problem_20_to_26/Problem_22_to_24.js`, "utf8");
+    res.send(content);
+    return;
+  } else if (id == 25) {
+    content = fs.readFileSync(`../Problem_20_to_26/Problem_25.js`, "utf8");
+    content += "\n\n=== userRoutes.js ===\n";
+    content += fs.readFileSync(`../Problem_20_to_26/userRoutes.js`, "utf8");
     res.send(content);
     return;
   }
