@@ -71,6 +71,10 @@ app.get("/:id", (req, res) => {
     content += fs.readFileSync(`../Problem_20_to_26/userRoutes.js`, "utf8");
     res.send(content);
     return;
+  } else if (id == 27) {
+    content = fs.readFileSync(`../Problem_20_to_26/Problem_27.js`, "utf8");
+    res.send(content);
+    return;
   }
   var content = fs.readFileSync(`../Problem_${id}.js`, "utf8");
   res.send(content);
