@@ -4,14 +4,9 @@ class RegistrationForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      firstName: '',
-      lastName: '',
+      name: '',
       email: '',
       password: '',
-      confirm: '',
-      gender: 'male',
-      country: '',
-      accept: false,
       errors: {},
       submittedData: null,
     }
@@ -24,27 +19,21 @@ class RegistrationForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const { firstName, lastName, email, gender, country } = this.state
-    const data = { firstName, lastName, email, gender, country }
+    const { name, email, password } = this.state
+    const data = { name, email, password }
     this.setState({ submittedData: data, errors: {} })
   }
 
   render() {
-    const { firstName, lastName, email, password, confirm, gender, country, accept, errors, submittedData } = this.state
+    const { name, email, password, errors, submittedData } = this.state
 
     return (
       <div className="registration-form" style={{ maxWidth: 500, margin: '0 auto', textAlign: 'left' }}>
         <form onSubmit={this.handleSubmit} noValidate>
           <div>
-            <label>First name</label>
-            <input name="firstName" value={firstName} onChange={this.handleChange} />
-            {errors.firstName && <div className="error">{errors.firstName}</div>}
-          </div>
-
-          <div>
-            <label>Last name</label>
-            <input name="lastName" value={lastName} onChange={this.handleChange} />
-            {errors.lastName && <div className="error">{errors.lastName}</div>}
+            <label>Name</label>
+            <input name="name" value={name} onChange={this.handleChange} />
+            {errors.name && <div className="error">{errors.name}</div>}
           </div>
 
           <div>
@@ -57,41 +46,6 @@ class RegistrationForm extends React.Component {
             <label>Password</label>
             <input name="password" type="password" value={password} onChange={this.handleChange} />
             {errors.password && <div className="error">{errors.password}</div>}
-          </div>
-
-          <div>
-            <label>Confirm Password</label>
-            <input name="confirm" type="password" value={confirm} onChange={this.handleChange} />
-            {errors.confirm && <div className="error">{errors.confirm}</div>}
-          </div>
-
-          <div>
-            <label>Gender</label>
-            <div>
-              <label>
-                <input type="radio" name="gender" value="male" checked={gender === 'male'} onChange={this.handleChange} /> Male
-              </label>
-              <label style={{ marginLeft: 8 }}>
-                <input type="radio" name="gender" value="female" checked={gender === 'female'} onChange={this.handleChange} /> Female
-              </label>
-            </div>
-          </div>
-
-          <div>
-            <label>Country</label>
-            <select name="country" value={country} onChange={this.handleChange}>
-              <option value="">Select country</option>
-              <option value="India">India</option>
-              <option value="USA">USA</option>
-              <option value="UK">UK</option>
-            </select>
-          </div>
-
-          <div>
-            <label>
-              <input type="checkbox" name="accept" checked={accept} onChange={this.handleChange} /> I accept the terms
-            </label>
-            {errors.accept && <div className="error">{errors.accept}</div>}
           </div>
 
           <div style={{ marginTop: 12 }}>
